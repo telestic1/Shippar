@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499370671701",
+    "project_id": "shippar-a652b",
+    "storage_bucket": "shippar-a652b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499370671701:android:1104c1c0f32f0c33c1dedc",
+        "android_client_info": {
+          "package_name": "com.example.shippar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQZzXxKUMWs7kxWw44AlTF9WD4_iqhK0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
