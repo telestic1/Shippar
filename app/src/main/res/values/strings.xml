@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Shippar</string>
+    <string name="app_name">shipper</string>
+    <string name="no_users_found">No users found</string>
+    <string name="signout">Sign Out</string>
 </resources>

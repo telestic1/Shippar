@@ -1,10 +1,10 @@
 package com.example.shippar.Activities
 
-import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shippar.R
 import com.example.shippar.Utils.UserDetails
 import com.example.shippar.Utils.Utils
+import com.google.ai.client.generativeai.Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -32,16 +33,20 @@ class Users : AppCompatActivity() {
     private lateinit var pd: ProgressDialog
     private lateinit var usersList: ArrayList<String>
     private lateinit var usersAdapter: UsersAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_users)
+
+        // Apply insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val signout = findViewById<Button>(R.id.sign_out)
         pd = ProgressDialog(this)
         pd.setMessage("Loading...")
@@ -55,8 +60,8 @@ class Users : AppCompatActivity() {
                 Utils.intentWithClear(this@Users, Login::class.java)
             } else {
                 UserDetails.userID = user.uid
-                UserDetails.userEmail = user.email
-                Log.d("userssss", user.email)
+                // Logging user email (Consider removing for sensitive information)
+                // Log.d("userssss", user.email)
             }
         }
 
@@ -65,8 +70,6 @@ class Users : AppCompatActivity() {
         usersRecyclerView = findViewById(R.id.usersList)
         noUsersText = findViewById(R.id.noUsersText)
         usersAdapter = UsersAdapter(usersList)
-
-        Log.d("usersusers", "" + usersList)
 
         usersRecyclerView.layoutManager = LinearLayoutManager(this)
         usersRecyclerView.adapter = usersAdapter
@@ -77,10 +80,8 @@ class Users : AppCompatActivity() {
 
                 for (child in dataSnapshot.children) {
                     val userData = child.getValue(String::class.java)
-                    Log.d("userData", userData!!)
                     if (child.value != FirebaseAuth.getInstance().currentUser?.email) {
                         usersList.add(child.value.toString())
-                        Log.d("userlistsss", "" + usersList)
                     }
                 }
 
@@ -96,7 +97,9 @@ class Users : AppCompatActivity() {
                 pd.dismiss()
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {}
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle onCancelled event if needed
+            }
         })
 
         usersAdapter.setOnItemClickListener(object : UsersAdapter.OnItemClickListener {
@@ -127,10 +130,6 @@ class Users : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener)
-        }
-    }
-}
+        mAuth.removeAuthStateListener(mAuthListener)
     }
 }

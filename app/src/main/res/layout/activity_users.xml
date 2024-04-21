@@ -9,12 +9,18 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Activities.Users">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
     <TextView
         android:id="@+id/noUsersText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="no_users_found"
+        android:text="@string/no_users_found"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -32,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="signout"
+        android:text="@string/signout"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>

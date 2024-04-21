@@ -10,16 +10,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.shippar.R
 
-class splashScreeen : AppCompatActivity() {
+class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash_screeen)
         Handler(Looper.getMainLooper()).postDelayed({
-      val intent = Intent(this,SignInActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
-        },2000)
-
+        }, 2000)
     }
 }
+
+
