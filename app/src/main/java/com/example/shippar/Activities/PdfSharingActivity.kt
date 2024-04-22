@@ -52,7 +52,7 @@ class PdfSharingActivity : AppCompatActivity() {
     }
 
     private fun downloadAndSharePdf(pdfUrl: String) {
-        binding.progressBar.visibility = View.VISIBLE // Show progress bar
+        binding.progressBar.visibility = View.VISIBLE
 
         GlobalScope.launch(Dispatchers.IO) {
             try {
