@@ -48,7 +48,7 @@ class Login : AppCompatActivity() {
                 mAuth.signInWithEmailAndPassword(user, pass).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         pd.dismiss()
-                        Utils.intentWithClear(this@Login, user::class.java)
+                        Utils.intentWithClear(this@Login, Users::class.java)
                     } else {
                         pd.dismiss()
                         Toast.makeText(this@Login, "FAILED" + task.exception?.message, Toast.LENGTH_SHORT).show()

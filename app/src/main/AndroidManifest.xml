@@ -12,32 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shippar"
         tools:targetApi="31">
-
         <activity
-            android:name=".Activities.PdfSharingActivity"
-            android:exported="true" >
+            android:name=".Activities.Chat"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SplashScreen"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
+            android:name=".Activities.PdfSharingActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activities.Users"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Activities.Login"
             android:exported="false" />
         <activity
             android:name=".Activities.SignInActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".Activities.SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
